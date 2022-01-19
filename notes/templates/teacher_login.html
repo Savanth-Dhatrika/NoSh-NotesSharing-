@@ -1,0 +1,37 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+{% csrf_token %}
+{% ifequal error "no" %}
+<script>
+    alert('Logged in Successfully');
+    window.location=("{% url 'teacher_home' %}");
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('Invalid Login Credentials. Try Again.');
+</script>
+{% endifequal %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <h2 class="text-center">FACULTY LOGIN</h2>
+            <hr>
+            <form method="post">
+                {% csrf_token %}
+                <label>Faculty Username</label>
+                <input type="text" class="form-control" placeholder="Enter Username..." name="un" required>
+                <br>
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="Enter Password..." name="pw" required>
+                <input type="submit" class="btn btn-danger mt-2" value="Login">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

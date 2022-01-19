@@ -1,0 +1,46 @@
+{% extends 'teacher_nav.html' %}
+{% load static%}
+{% block body %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('#myTable').DataTable();
+});
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+
+<div class="container mt-5">
+    <h2 class="text-center">ALL USERS</h2>
+    <hr>
+    <table class="table table-bordered" id="myTable">
+        <thead>
+            <tr>
+                <th>SNo.</th>
+                <th>Full Name</th>
+                <th>Email ID</th>
+                <th>Contact</th>
+                <th>Branch</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in persons_obj %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td style="text-transform: capitalize;">{{p.user.first_name}} {{p.user.last_name}}</td>
+                <td>{{p.user.username}}</td>
+                <td>{{p.contact}}</td>
+                <td>{{p.branch}}</td>
+                <td><a href="{% url 't_deleteusers' p.user.id %}" class="btn btn-danger" onclick="return confirm('Do you want to delete {{p.user.username}} ?')">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

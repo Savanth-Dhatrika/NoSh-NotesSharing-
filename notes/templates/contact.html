@@ -1,0 +1,62 @@
+{% extends 'navigation.html'%}
+{% load static %}
+{% block body %}
+
+{% ifequal error "no" %}
+     <script>
+	   alert('Your Message has been Send Successfully');
+	   window.location=("{% url 'contact' %}");
+     </script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+     <script>
+	    alert('Something went wrong, Try Again');
+     </script>
+{% endifequal %}
+
+<div style="background-color:darkred ;width: 100%;height: 100px;">
+    <h3 class="text-white container pt-3">Contact Us</h3>
+</div>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6" style="background-color: gray;">
+            <h4 class="text-center">Query/Complaint Form :</h4>
+            <br>
+            <form method="post" class="form">
+                {% csrf_token %}
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter Full name..." name="fullname" class="form-control" required>
+                <br>
+                <label>Email</label>
+                <input type="email" placeholder="Enter Email..." name="email" class="form-control" required>
+                <br>
+                <label>Contact</label>
+                <input type="number" placeholder="Enter Contact Number..." name="mobile" class="form-control" required>
+                <br>
+                <label>Subject</label>
+                <input type="text" placeholder="Enter Subject..." name="subject" class="form-control" required>
+                <br>
+                <label>Query/Complaint</label>
+                <textarea name="message" id="" cols="30" rows="4" class="form-control" placeholder="Enter Message..." required></textarea>
+                <br>
+                <input type="submit" class="btn btn-success" value="Submit">
+                <br>
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-10">
+            <p><i class="fas fa-envelope"></i>Email ID : 18311A12P0@sreenidhi.edu.in, 18311A12K3@sreenidhi.edu.in, 18311A12J2@sreenidhi.edu.in</p>
+            <p><i class="fas fa-phone-square"></i>Contact : 9703000539(Savanth Dhatrika), 7981474402(Devashish Jobanputra), 9959113652(Shiva Prasad Reddy Andem)</p>
+            <p><i class="fas fa-address-card"></i>Address : SNIST, Ghatkesar</p>
+            <p><i class="far fa-clock"></i>Office Hours : 10:00 AM to 10:00 PM</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

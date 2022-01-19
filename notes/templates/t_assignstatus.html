@@ -1,0 +1,38 @@
+{% extends 'teacher_nav.html' %}
+{% load static %}
+{% block body %}
+
+{% ifequal error "no" %}
+<script>
+    alert('Status Updated Successfully');
+    window.location("{% url 't_allnotes' %}");
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('Something went wrong. Try Again.');
+    window.location("{% url 't_pendingnotes' %}");
+</script>
+{% endifequal %}
+
+<div class="container mt-5">
+    <h2 class="text-center">ASSIGN STATUS</h2>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        <label>Uploaded By</label>
+        <input type="text" class="form-control" value="{{notes.user.user.username}}" readonly>
+        <label>Subject</label>
+        <input type="text" class="form-control" value="{{notes.subject}}" readonly>
+        <label>Status</label>
+        <select class="form-control" name="status" required>
+            <option value="Accepted">Accepted</option>
+            <option value="Rejected">Rejected</option>
+        </select>
+        <br>
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+</div>
+
+{% endblock %}

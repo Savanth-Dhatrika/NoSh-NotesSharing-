@@ -1,0 +1,20 @@
+1.Install python.
+
+2.Execute the following command to install Django Framework.
+	
+	$pip install django
+
+3.Open command prompt and move to project directory.
+	
+	For example if my project directory(NotesSharing) is in 'E' drive...
+		$ C:> cd E:
+		$ E:> cd NotesSharing
+		$ E:/NotesSharing> 
+
+4.Execute the following command to run the project.
+	
+	$ E:/NotesSharing> python manage.py runserver
+
+5.To view the project application open the following html link in any browser.
+
+	"127.0.0.1:8000"

@@ -1,0 +1,92 @@
+{% extends 'student_nav.html' %}
+{% load static%}
+{% block body %}
+
+<div class="container">
+    <h2 class="text-center mt-5">PROFILE</h2>
+    <hr>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <b>Full Name :</b>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5" style="text-transform: capitalize;">
+            {{person_obj.user.first_name}} {{person_obj.user.last_name}}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <b>Roll No. :</b>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            {{person_obj.rollno}}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <b>Email ID :</b>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            {{person_obj.user.username}}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <b>Contact :</b>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            {{person_obj.contact}}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <b>Batch :</b>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            {{person_obj.batch}}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <b>Branch :</b>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            {{person_obj.branch}}
+        </div>
+    </div><hr>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <b>Section :</b>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            {{person_obj.section}}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <a href="{% url 's_editprofile' %}" class="btn btn-primary mt-3">Edit Profile</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

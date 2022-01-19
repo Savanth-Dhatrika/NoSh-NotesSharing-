@@ -1,0 +1,42 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+
+{% ifequal error "no" %}
+<script>
+    alert('Logged in Successfully');
+    window.location=("{% url 'student_home' %}");
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('Invalid Login Credentials. Try Again.');
+</script>
+{% endifequal %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-6">
+            <h2 class="text-center">NEW STUDENTS</h2>
+            <hr>
+            <p>By creating an account you will be able to share your assignments and
+                 notes with your faculty and download notes uploaded by them.</p>
+            <center><a href="{% url 'signup' %}" class="btn btn-danger text-white mt-5">Create an Account</a></center>
+        </div>
+        <div class="col-sm-6">
+            <h2 class="text-center">STUDENT LOGIN</h2>
+            <hr>
+            <form method="post">
+                {% csrf_token %}
+                <label>Email Address</label>
+                <input type="email" class="form-control" placeholder="Enter Email-Id..." name="eid" required>
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="Enter Password..." name="pwd" required>
+                <input type="submit" class="btn btn-danger mt-2" value="Login">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
